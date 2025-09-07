@@ -63,7 +63,7 @@ model_name = "distilbert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 def tokenize(batch):
-    # Reduce max_length for CPU efficiency
+   
     return tokenizer(batch["text"], padding="max_length", truncation=True, max_length=128)
 
 tokenized = raw_datasets.map(tokenize, batched=True, remove_columns=["text"])
@@ -161,5 +161,6 @@ print("\nConfusion Matrix:\n", confusion_matrix(y_true, y_pred))
 # ----------------------------
 trainer.save_model("./final_model_cpu")
 tokenizer.save_pretrained("./final_model_cpu")
+
 
 print("Training completed. Model saved in './final_model_cpu'")
