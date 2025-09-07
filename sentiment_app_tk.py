@@ -1,46 +1,3 @@
-# import tkinter as tk
-# from transformers import AutoTokenizer, AutoModelForSequenceClassification
-# import torch
-# import numpy as np
-
-# # Load model
-# model_path = "./final_model_cpu"
-# tokenizer = AutoTokenizer.from_pretrained(model_path)
-# model = AutoModelForSequenceClassification.from_pretrained(model_path)
-
-# def predict():
-#     text = entry.get("1.0", tk.END).strip()
-#     if not text:
-#         result_label.config(text="Please enter some text")
-#         return
-#     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=256)
-#     with torch.no_grad():
-#         outputs = model(**inputs)
-#     probs = torch.nn.functional.softmax(outputs.logits, dim=1).numpy()[0]
-#     pred = np.argmax(probs)
-#     labels = ["negative", "positive"]
-#     result_label.config(text=f"Prediction: {labels[pred]} ({probs[pred]*100:.2f}% confidence)")
-
-# # Tkinter UI
-# root = tk.Tk()
-# root.title("Sentiment Analysis App")
-
-# tk.Label(root, text="Enter review:").pack()
-# entry = tk.Text(root, height=5, width=50)
-# entry.pack()
-
-# tk.Button(root, text="Predict", command=predict).pack(pady=5)
-
-# result_label = tk.Label(root, text="")
-# result_label.pack()
-
-# root.mainloop()
-
-
-
-
-
-
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import pandas as pd
@@ -122,3 +79,4 @@ result_label = tk.Label(root, text="")
 result_label.pack()
 
 root.mainloop()
+
