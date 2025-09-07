@@ -36,6 +36,9 @@ pip install -r requirements.txt
 
 The project uses the IMDB Dataset (50,000 reviews, balanced positive/negative).
 
+Download the dataset from this link
+https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+
 Steps performed in preprocessing:
 
 Lowercasing text.
