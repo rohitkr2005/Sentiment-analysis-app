@@ -11,7 +11,7 @@ from transformers import (
 )
 from transformers.trainer_utils import EvalPrediction
 
-# 1. Use your DataFrame (df already loaded in notebook)
+# 1. Load the DataFrame
 data = pd.read_csv("preprocessed_sentiment_data.csv")
 df = pd.DataFrame(data)
 print(df.head())
@@ -79,18 +79,18 @@ from transformers import TrainingArguments
 
 training_args = TrainingArguments(
     output_dir="./binary_sentiment_model",
-    eval_strategy="epoch",              # ✅ use eval_strategy (not evaluation_strategy)
-    save_strategy="epoch",              # must match eval_strategy
+    eval_strategy="epoch",              
+    save_strategy="epoch",            
     learning_rate=2e-5,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
     num_train_epochs=4,
     weight_decay=0.01,
-    load_best_model_at_end=True,        # works now since save == eval
+    load_best_model_at_end=True,       
     metric_for_best_model="f1",
     greater_is_better=True,
     logging_dir="./logs",
-    logging_strategy="epoch"            # also set logging properly
+    logging_strategy="epoch"           
 )
 
 
@@ -112,4 +112,5 @@ y_true = preds.label_ids
 y_pred = np.argmax(preds.predictions, axis=1)
 
 print("\nClassification Report:\n", classification_report(y_true, y_pred, target_names=["negative", "positive"], zero_division=0))
+
 print("\nConfusion Matrix:\n", confusion_matrix(y_true, y_pred))
